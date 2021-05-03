@@ -15,7 +15,8 @@ public class King implements Runnable {
             int total = 0;
             door.acquireWrite();
             ListADT<Valuable> valuables = new ArrayList<>();
-            for (Valuable valuable : door.getValuables()) {
+            for (int i = 0; i < door.getValuables().size(); i++) {
+                Valuable valuable = (Valuable) door.getValuables().get(i);
                 total += valuable.getWorth();
                 valuables.add(door.retrieve());
                 if (total >= random) {
@@ -24,8 +25,8 @@ public class King implements Runnable {
             }
             if (total < random) {
                 System.out.println("The King did not collect enough valuables to throw a party...");
-                for (Valuable valuable : valuables) {
-                    door.addValuable(valuable);
+                for (int i = 0; i < valuables.size(); i++) {
+                    door.addValuable(valuables.get(i));
                 }
             }
             else {

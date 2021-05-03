@@ -10,7 +10,7 @@ public class Accountant implements Runnable {
         while (true) {
             door.acquireRead();
             int total = door.count();
-            sleep(1.5L);
+            sleep(2);
             Log.getInstance().addLog("Total sum of valuables in the treasury: " + total);
             door.releaseRead();
             sleep(5);
