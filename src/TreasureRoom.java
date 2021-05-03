@@ -20,6 +20,10 @@ public class TreasureRoom implements TreasureRoomDoor {
        return sum;
     }
 
+    @Override
+    public ArrayList getValuables() {
+        return list;
+    }
 
     @Override
     public void addValuable(Valuable valuable) {
