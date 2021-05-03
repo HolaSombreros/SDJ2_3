@@ -11,7 +11,7 @@ public class Miner implements Runnable
         this.mine = mine;
         this.list = deposit;
     }
-
+ 
     @Override
     public void run() {
         while(true){
