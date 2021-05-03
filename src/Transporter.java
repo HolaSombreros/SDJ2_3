@@ -7,8 +7,8 @@ public class Transporter implements Runnable {
     private QueueADT<Valuable> list;
     private TreasureRoomDoor treasureRoomDoor;
 
-    public Transporter(){
-        this.list = new Deposit<>();
+    public Transporter(QueueADT<Valuable> list){
+        this.list = list;
         this.treasureRoomDoor = new Guardsman();
     }
 
@@ -16,14 +16,14 @@ public class Transporter implements Runnable {
     public void run() {
         while(true){
             for(int i=0; i <(int)(Math.random()*(200-50));i++){
-                
+                //TODO: check step 2
                 list.dequeue();
                 period();
             }
         }
     }
     private void period(){
-        int period = ThreadLocalRandom.current().nextInt(5000, 3000);
+        int period = ThreadLocalRandom.current().nextInt(3000, 5000);
         try{
             Thread.sleep(period);
         }
