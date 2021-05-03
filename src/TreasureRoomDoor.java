@@ -1,8 +1,13 @@
+import utility.collection.ArrayList;
+
 public interface TreasureRoomDoor {
 
+
+
     void addValuable(Valuable valuable);
-    Valuable retrieve(String name);
-    Valuable lookAtValuable(String name);
+    Valuable retrieve();
+    Valuable lookAtValuable();
+    int count();
     void acquireRead();
     void acquireWrite();
     void releaseRead();
