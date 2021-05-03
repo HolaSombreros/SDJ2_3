@@ -1,9 +1,11 @@
-import java.util.ArrayList;
+import utility.collection.ArrayList;
+import utility.collection.ListADT;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Valuables {
-    private ArrayList<String> valuables;
+    private ListADT<Valuable> valuables;
     private static Map<String,Valuables> map = new HashMap<>();
     private String key;
 
@@ -26,7 +28,7 @@ public class Valuables {
         return instance;
     }
 
-    public void addValuable(String text){
-        valuables.add(text);
+    public void addValuable(Valuable valuable){
+        valuables.add(valuable);
     }
 }
