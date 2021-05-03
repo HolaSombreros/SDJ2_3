@@ -15,13 +15,13 @@ public class Miner implements Runnable
     @Override
     public void run() {
         while(true){
-            //Valuable valuable = mine.getRandomValuable();
-//            list.enqueue(mine.getRandomValuable());
-            Log.getInstance().addLog("Miner has acquired <valuable>");
+            Valuable valuable = mine.getRandomValuable();
+            list.enqueue(valuable);
+            Log.getInstance().addLog("Miner has acquired a " + valuable.getName() + " worth $" + valuable.getWorth());
             period();
-
         }
     }
+    
     private void period(){
         int period = ThreadLocalRandom.current().nextInt(3000, 5000);
         try{
