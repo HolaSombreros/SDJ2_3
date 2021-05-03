@@ -1,8 +1,9 @@
 import utility.collection.ArrayList;
+import utility.collection.ListADT;
 
 public class TreasureRoom implements TreasureRoomDoor {
 
-    private ArrayList<Valuable> list;
+    private ListADT<Valuable> list;
     private int readers;
     private int writers;
 
@@ -21,8 +22,8 @@ public class TreasureRoom implements TreasureRoomDoor {
     }
 
     @Override
-    public ArrayList getValuables() {
-        return list;
+    public ListADT getValuables() {
+        return  list;
     }
 
     @Override
