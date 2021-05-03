@@ -18,6 +18,7 @@ public class Transporter implements Runnable {
             for(int i=0; i <(int)(Math.random()*(200-50));i++){
                 //TODO: check step 2
                 list.dequeue();
+                Log.getInstance().addLog("Transporter has transported the valuables");
                 period();
             }
         }

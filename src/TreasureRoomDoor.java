@@ -2,9 +2,6 @@ import utility.collection.ArrayList;
 import utility.collection.ListADT;
 
 public interface TreasureRoomDoor {
-
-
-
     void addValuable(Valuable valuable);
     Valuable retrieve();
     Valuable lookAtValuable();
