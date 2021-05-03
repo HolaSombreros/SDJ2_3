@@ -10,7 +10,7 @@ public class TreasureRoom implements TreasureRoomDoor {
     public TreasureRoom() {
         readers = 0;
         writers = 0;
-        list = new ArrayList();
+        list = new ArrayList<>();
     }
 
     @Override
@@ -22,7 +22,7 @@ public class TreasureRoom implements TreasureRoomDoor {
     }
 
     @Override
-    public ListADT getValuables() {
+    public ListADT<Valuable> getValuables() {
         return  list;
     }
 
