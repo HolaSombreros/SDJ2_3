@@ -1,4 +1,5 @@
 import utility.collection.ArrayList;
+import utility.collection.ListADT;
 
 public class Guardsman implements TreasureRoomDoor {
 
@@ -24,7 +25,7 @@ public class Guardsman implements TreasureRoomDoor {
     return treasureRoom.lookAtValuable();
   }
 
-  @Override public ArrayList getValuables()
+  @Override public ListADT<Valuable> getValuables()
   {
     return treasureRoom.getValuables();
   }

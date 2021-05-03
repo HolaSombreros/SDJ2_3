@@ -1,4 +1,5 @@
 import utility.collection.ArrayList;
+import utility.collection.ListADT;
 
 public interface TreasureRoomDoor {
 
@@ -7,7 +8,7 @@ public interface TreasureRoomDoor {
     void addValuable(Valuable valuable);
     Valuable retrieve();
     Valuable lookAtValuable();
-    ArrayList getValuables();
+    ListADT getValuables();
     int count();
     void acquireRead();
     void acquireWrite();
