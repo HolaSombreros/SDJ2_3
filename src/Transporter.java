@@ -23,7 +23,7 @@ public class Transporter implements Runnable {
         }
     }
     private void period(){
-        int period = ThreadLocalRandom.current().nextInt(3000, 5000);
+        int period = ThreadLocalRandom.current().nextInt(5000, 3000);
         try{
             Thread.sleep(period);
         }
