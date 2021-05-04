@@ -21,7 +21,6 @@ public class Deposit<T> implements QueueADT<T> {
     public synchronized void enqueue(T element) {
         notifyAll();
         valuables.add(element);
-        System.out.println("----------> SUM : " + sum());
     }
     
     @Override

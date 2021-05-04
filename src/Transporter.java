@@ -20,19 +20,19 @@ public class Transporter implements Runnable {
             int val = (int)(Math.random()*(200-50)+50);
             int total = 0;
             ListADT<Valuable> valuables = new ArrayList<>();
-            while (total<val)
-            {
+            while (total<val) {
                 Valuable valuable = deposit.dequeue();
                 total += valuable.getWorth();
                 valuables.add(valuable);
             }
             sleep();
-            while (!valuables.isEmpty())
-            {
+            treasureRoomDoor.acquireWrite();
+            while (!valuables.isEmpty()) {
                 treasureRoomDoor.addValuable(valuables.get(0));
                 valuables.remove(0);
             }
-            Log.getInstance().addLog(Thread.currentThread().getName() + " has transported the valuables");
+            Log.getInstance().addLog(Thread.currentThread().getName() + " has transported the valuables of total: $" + total);
+            treasureRoomDoor.releaseWrite();
             sleep();
         }
     }

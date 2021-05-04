@@ -16,33 +16,29 @@ public class King implements Runnable {
             int randomAmount = getRandomNumber(50, 150);
             int total = 0;
             door.acquireWrite();
-            
             ListADT<Valuable> valuables = new ArrayList<>();
-            for (int i = 0; i < door.getValuables().size(); i++) {
-                Valuable valuable = (Valuable) door.getValuables().get(i);
+            while(door.getValuables().size() > 0) {
+                Valuable valuable = door.retrieve();
                 total += valuable.getWorth();
-                valuables.add(door.retrieve());
+                valuables.add(valuable);
                 if (total >= randomAmount) {
                     break;
                 }
             }
             if (total < randomAmount) {
-                Log.getInstance().addLog(Thread.currentThread().getName() + " did not collect enough valuables to throw a party...");
-                for (int i = 0; i < valuables.size(); i++) {
+                Log.getInstance().addLog(Thread.currentThread().getName() + " only collected $" + total + " worth of treasury, which was not enough valuables to throw a party...");
+                for (int i = 0; i < valuables.size(); i++)
                     door.addValuable(valuables.get(i));
-                }
             }
-            else {
+            else
                 Log.getInstance().addLog(Thread.currentThread().getName() + " is throwing a party with treasury worth $" + total + "!");
-            }
-            
             door.releaseWrite();
             sleep();
         }
     }
     
     private int getRandomNumber(int min, int max) {
-        return (int) (Math.random() * max - min) + min;
+        return (int) (Math.random() * (max - min) + min);
     }
     
     private void sleep() {

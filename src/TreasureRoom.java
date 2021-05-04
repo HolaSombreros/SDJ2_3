@@ -14,25 +14,25 @@ public class TreasureRoom implements TreasureRoomDoor {
     }
 
     @Override
-    public int count() {
+    public synchronized int count() {
        int sum = 0;
        for(int i = 0; i < list.size(); i++)
-           sum += list.remove(i).getWorth();
+           sum += list.get(i).getWorth();
        return sum;
     }
 
     @Override
-    public ListADT<Valuable> getValuables() {
+    public synchronized ListADT<Valuable> getValuables() {
         return  list;
     }
 
     @Override
-    public void addValuable(Valuable valuable) {
+    public synchronized void addValuable(Valuable valuable) {
         list.add(valuable);
     }
 
     @Override
-    public Valuable retrieve() {
+    public synchronized Valuable retrieve() {
         if(list.size() > 0)
             return list.remove(0);
         else
@@ -40,7 +40,7 @@ public class TreasureRoom implements TreasureRoomDoor {
     }
 
     @Override
-    public Valuable lookAtValuable() {
+    public synchronized Valuable lookAtValuable() {
         if(list.size() > 0)
             return list.get(0);
         else

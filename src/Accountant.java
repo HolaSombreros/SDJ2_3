@@ -11,7 +11,6 @@ public class Accountant implements Runnable {
     public void run() {
         while (true) {
             door.acquireRead();
-            
             int total = door.count();
             sleep();
             Log.getInstance().addLog(Thread.currentThread().getName() + " counted the sum of the worth of all valuables in the treasury to $" + total);

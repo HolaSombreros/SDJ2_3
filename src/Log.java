@@ -1,6 +1,3 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.util.ArrayList;
 
 public class Log {
     private static Log instance;

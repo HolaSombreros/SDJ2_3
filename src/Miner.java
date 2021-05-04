@@ -16,7 +16,6 @@ public class Miner implements Runnable
     public void run() {
         while(true){
             Valuable valuable = mine.getRandomValuable();
-            Log.getInstance().addLog(Thread.currentThread().getName() + " has acquired a " + valuable.getName() + " worth $" + valuable.getWorth());
             deposit.enqueue(valuable);
             Log.getInstance().addLog(Thread.currentThread().getName() + " put a " + valuable.getName() + " worth $" + valuable.getWorth() + " into the deposit");
             sleep();
