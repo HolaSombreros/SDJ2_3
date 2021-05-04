@@ -2,62 +2,83 @@ import utility.collection.ArrayList;
 import utility.collection.ListADT;
 import utility.collection.QueueADT;
 
-public class Deposit<T> implements QueueADT<T>
-{
-    private ListADT<T> list;
-
-    // TODO - modify this class
-    public Deposit(){
-        this.list = new ArrayList<>();
+public class Deposit<T> implements QueueADT<T> {
+    private ListADT<T> valuables;
+    
+    public Deposit() {
+        this.valuables = new ArrayList<>();
     }
+    
     @Override
-    public synchronized void enqueue(T element)
-    {
-        list.add(list.size(), element);
+    public synchronized void enqueue(T element) {
+        notifyAll();
+        valuables.add(element);
     }
-
+    
     @Override
-    public synchronized T dequeue()
-    {
-        return list.remove(0);
+    public synchronized T dequeue() {
+        while (size() <= 0) {
+            try {
+                wait();
+            }
+            catch (InterruptedException e) {
+                // empty
+            }
+        }
+        notifyAll();
+        return valuables.remove(0);
     }
-
+    
     @Override
-    public synchronized T first()
-    {
-        return list.get(0);
+    public synchronized T first() {
+        while (size() <= 0) {
+            try {
+                wait();
+            }
+            catch (InterruptedException e) {
+                // empty
+            }
+        }
+        notifyAll();
+        return valuables.get(0);
     }
-
+    
     @Override
-    public synchronized int indexOf(T element)
-    {
-        return list.indexOf(element);
+    public synchronized int indexOf(T element) {
+        while (size() <= 0) {
+            try {
+                wait();
+            }
+            catch (InterruptedException e) {
+                // empty
+            }
+        }
+        notifyAll();
+        return valuables.indexOf(element);
     }
-
+    
     @Override
-    public synchronized boolean isEmpty()
-    {
-        return list.isEmpty();
+    public synchronized boolean isEmpty() {
+        return valuables.isEmpty();
     }
-
+    
     @Override
-    public synchronized boolean isFull()
-    {
-        return list.isFull();
+    public synchronized boolean isFull() {
+        return valuables.isFull();
     }
-
+    
     @Override
-    public synchronized int size()
-    {
-        return list.size();
+    public synchronized int size() {
+        return valuables.size();
     }
-
+    
     @Override
-    public synchronized int capacity()
-    {
-        return -1;
+    public synchronized int capacity() {
+        return Integer.MAX_VALUE;
     }
-    public synchronized String toString(){
-        return list.toString();
+    
+    @Override
+    public synchronized String toString() {
+        return valuables.toString();
     }
 }

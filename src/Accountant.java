@@ -1,3 +1,5 @@
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Accountant implements Runnable {
     private TreasureRoomDoor door;
     
@@ -9,20 +11,23 @@ public class Accountant implements Runnable {
     public void run() {
         while (true) {
             door.acquireRead();
+            
             int total = door.count();
-            sleep(2);
-            Log.getInstance().addLog("Total sum of valuables in the treasury: " + total);
+            sleep();
+            Log.getInstance().addLog(Thread.currentThread().getName() + " counted the sum of the worth of all valuables in the treasury to $" + total);
+            
             door.releaseRead();
-            sleep(5);
+            sleep();
         }
     }
     
-    private void sleep(long seconds) {
-        try {
-            Thread.sleep(seconds * 1000);
+    private void sleep() {
+        int period = ThreadLocalRandom.current().nextInt(7000, 9000);
+        try{
+            Thread.sleep(period);
         }
-        catch (InterruptedException e) {
-            //
+        catch (InterruptedException e){
+            e.printStackTrace();
         }
     }
 }
