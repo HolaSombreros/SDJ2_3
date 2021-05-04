@@ -6,11 +6,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Transporter implements Runnable {
 
-    private QueueADT<Valuable> list;
+    private QueueADT<Valuable> deposit;
     private TreasureRoomDoor treasureRoomDoor;
 
-    public Transporter(QueueADT<Valuable> list, TreasureRoomDoor door){
-        this.list = list;
+    public Transporter(QueueADT<Valuable> deposit, TreasureRoomDoor door){
+        this.deposit = deposit;
         this.treasureRoomDoor = door;
     }
 
@@ -21,17 +21,24 @@ public class Transporter implements Runnable {
             int val = (int)(Math.random()*(200-50));
             int total = 0;
             ListADT<Valuable> valuables = new ArrayList<>();
-            for (int i = 0; i < list.size(); i++){
-                Valuable valuable = list.first();
+            while (total<val)
+            {
+                Valuable valuable = deposit.dequeue();
                 total += valuable.getWorth();
-                list.dequeue();
-                Log.getInstance().addLog("Transporter has transported the valuables");
-                period();
+                valuables.add(valuable);
+                Log.getInstance().addLog(Thread.currentThread().getName() + " has transported the valuables");
             }
+            sleep();
+            while (!valuables.isEmpty())
+            {
+                treasureRoomDoor.addValuable(valuables.get(0));
+                valuables.remove(0);
+            }
+            sleep();
         }
     }
     
-    private void period(){
+    private void sleep(){
         int period = ThreadLocalRandom.current().nextInt(5000, 3000);
         try{
             Thread.sleep(period);

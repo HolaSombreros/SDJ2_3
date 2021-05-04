@@ -1,12 +1,13 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utility.collection.ArrayList;
+import utility.collection.ListADT;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayListTest
 {
-  private ArrayList<String> arrayList;
+  private ListADT<String> arrayList;
 
   @BeforeEach void setUp()
   {
