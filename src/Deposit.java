@@ -9,10 +9,19 @@ public class Deposit<T> implements QueueADT<T> {
         this.valuables = new ArrayList<>();
     }
     
+    private int sum() {
+        int total = 0;
+        for (int i = 0; i < valuables.size(); i++) {
+            total += ((Valuable) (valuables.get(i))).getWorth();
+        }
+        return total;
+    }
+    
     @Override
     public synchronized void enqueue(T element) {
         notifyAll();
         valuables.add(element);
+        System.out.println("----------> SUM : " + sum());
     }
     
     @Override
