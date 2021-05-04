@@ -33,7 +33,7 @@ public class King implements Runnable {
                 }
             }
             else {
-                Log.getInstance().addLog(Thread.currentThread().getName() + " is throwing a party!");
+                Log.getInstance().addLog(Thread.currentThread().getName() + " is throwing a party with treasury worth $" + total + "!");
             }
             
             door.releaseWrite();
