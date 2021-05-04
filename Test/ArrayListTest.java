@@ -135,7 +135,7 @@ public class ArrayListTest
   @Test void indexOfZero()
   {
     arrayList.add(null);
-    assertThrows(NullPointerException.class, () -> arrayList.indexOf(null));
+    assertEquals(arrayList.indexOf(null),0);
   }
 
   @Test void indexOfOne()
