@@ -14,11 +14,10 @@ public class Transporter implements Runnable {
         this.treasureRoomDoor = door;
     }
 
-    // TODO - check this method
     @Override
     public void run() {
         while(true){
-            int val = (int)(Math.random()*(200-50));
+            int val = (int)(Math.random()*(200-50)+50);
             int total = 0;
             ListADT<Valuable> valuables = new ArrayList<>();
             while (total<val)
@@ -26,7 +25,6 @@ public class Transporter implements Runnable {
                 Valuable valuable = deposit.dequeue();
                 total += valuable.getWorth();
                 valuables.add(valuable);
-                Log.getInstance().addLog(Thread.currentThread().getName() + " has transported the valuables");
             }
             sleep();
             while (!valuables.isEmpty())
@@ -34,6 +32,7 @@ public class Transporter implements Runnable {
                 treasureRoomDoor.addValuable(valuables.get(0));
                 valuables.remove(0);
             }
+            Log.getInstance().addLog(Thread.currentThread().getName() + " has transported the valuables");
             sleep();
         }
     }
