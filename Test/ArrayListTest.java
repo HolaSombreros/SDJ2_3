@@ -157,11 +157,6 @@ public class ArrayListTest
     assertEquals(-1, arrayList.indexOf("A"));
   }
 
-  @Test void indexOfException()
-  {
-
-  }
-
   @Test void containsZero()
   {
     assertFalse(arrayList.contains(null));
@@ -192,11 +187,6 @@ public class ArrayListTest
     assertFalse(arrayList.contains("A"));
   }
 
-  @Test void containsException()
-  {
-
-  }
-
   @Test void isEmptyZero()
   {
     assertTrue(arrayList.isEmpty());
@@ -214,16 +204,6 @@ public class ArrayListTest
     arrayList.add("B");
     arrayList.add("C");
     assertFalse(arrayList.isEmpty());
-  }
-
-  @Test void isEmptyBounds()
-  {
-
-  }
-
-  @Test void isEmptyException()
-  {
-
   }
 
   @Test void isFullZero()
@@ -244,16 +224,6 @@ public class ArrayListTest
     assertTrue(arrayList.isFull());
   }
 
-  @Test void isFullBounds()
-  {
-
-  }
-
-  @Test void isFullException()
-  {
-
-  }
-
   @Test void sizeZero()
   {
     assertEquals(arrayList.size(),0);
@@ -270,16 +240,6 @@ public class ArrayListTest
     for (int i=0;i<100;i++)
       arrayList.add("A");
     assertEquals(100,arrayList.size());
-  }
-
-  @Test void sizeBounds()
-  {
-
-  }
-
-  @Test void sizeException()
-  {
-
   }
 
   @Test void toStringZero()
@@ -299,15 +259,5 @@ public class ArrayListTest
     arrayList.add("B");
     arrayList.add("C");
     assertEquals("{A, B, C}", arrayList.toString());
-  }
-
-  @Test void toStringBounds()
-  {
-
-  }
-
-  @Test void toStringException()
-  {
-
   }
 }
